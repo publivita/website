@@ -529,7 +529,7 @@
                 </div>
                 <div class="lg:col-span-2 lg:ms-24">
                     <div class="p-6 md:p-12 rounded-md shadow-lg bg-white">
-                        <form action="https://formspree.io/f/mkgobrey" method="POST">
+                        <form action="contact-form">
                             <div class="grid sm:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm/normal font-semibold text-black mb-2"
@@ -746,7 +746,32 @@
       gtag('js', new Date());
     
       gtag('config', 'G-Y0JVZNC28V');
-</script>
+    </script>
+    <script>
+        (function() {
+            emailjs.init({
+              publicKey: "dY1YAlBUXC_iMN3XX",
+            });
+
+            document.getElementById("contact-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                let templateParams = {
+                    from_name: document.getElementById("name").value,
+                    reply_to: document.getElementById("email").value,
+                    message: document.getElementById("message").value
+                };
+
+                emailjs.send("service_ss71o13", "template_3ot5oh7", templateParams)
+                    .then(function(response) {
+                        alert("E-mail enviado com sucesso! 🚀");
+                    }, function(error) {
+                        alert("Erro ao enviar o e-mail: " + JSON.stringify(error));
+                    });
+            });
+        })();
+    </script>
+    
 </body>
 
 </html>
